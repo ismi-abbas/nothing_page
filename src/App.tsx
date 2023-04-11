@@ -1,26 +1,30 @@
 import reactIcon from './assets/react.svg'
 import { navigation } from './constant'
+import { Link } from 'react-router-dom'
 
 function App() {
+  console.log(navigation)
   return (
-    <div className="w-full h-auto flex flex-col items-center justify-center bg-[#050211] text-center">
+    <div className="max-w-full h-screen flex flex-col items-center justify-center bg-[#050211] text-center text-white">
       <nav className="text-white p-8 w-screen flex justify-center rounded-full">
         <ul className="flex flex-row gap-7 items-center">
           <li className="hover:cursor-pointer">
-            <img src={reactIcon} alt="react" className="text-white" />
+            <Link to="/">
+              <img src={reactIcon} alt="react" className="text-white" />
+            </Link>
           </li>
           {navigation.map((nav: any, idx: number) => (
             <li
               key={idx}
               className="hover:cursor-pointer hover:text-slate-200 text-slate-500"
             >
-              {nav}
+              <Link to={nav.link}>{nav.name}</Link>
             </li>
           ))}
         </ul>
       </nav>
-      <div className="container-sm mx-auto text-center h-[400px] w-[700px]">
-        <div className="pt-20">
+      <div className="max-w-2xl mx-auto text-center">
+        <div className="p-5">
           <h1 className="text-white decoration-sky-400 decoration-solid font-medium text-6xl">
             Deploy Serverless Functions at the{' '}
             <span className="bg-clip-text from-green-400 to-purple-400 text-transparent bg-gradient-to-r via-[#5A7ACB] font-bold">
